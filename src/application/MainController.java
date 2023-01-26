@@ -1,10 +1,21 @@
 package application;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.TextArea;
 import model.Character;
+
 import model.Fighter;
 
 public class MainController {
+	
+	@FXML
+	private TextArea testArea; 
+	
 	public MainController () {
+		// Why have and use MainController to create data instead of initialize? 
+		 
+	}
+	public void initialize () {
 		Character character1 = new Character("Cleave", 1);
 		
 		character1.addStats("STR", 13);
@@ -16,9 +27,10 @@ public class MainController {
 		Fighter fighter1 = new Fighter("Bobby the bird", 9, "Bird"); 
 		
 		System.out.println(fighter1.getName());
-		 
-	}
-	public void initialize () {
+		
+		testArea.setText(fighter1.getName());
+		
+		
 		
 	}
 	

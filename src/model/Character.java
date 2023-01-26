@@ -9,7 +9,6 @@ public class Character {
 	private LinkedHashMap<String, Integer> stats = new LinkedHashMap<String, Integer>(); 
 	
 	public Character() {
-		
 	}
 	
 	public Character(String name, int level) {
@@ -42,5 +41,5 @@ public class Character {
 	public int getStat(String type) {
 		return stats.get(type); 
 	}
-
+	
 }

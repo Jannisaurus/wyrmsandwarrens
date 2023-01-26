@@ -5,7 +5,15 @@ public class Fighter extends Character {
 	
 	public Fighter (String name, int level, String role) {
 		super (name, level);
-		this.role = role; 
+		this.setRole(role); 
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 	
 }
