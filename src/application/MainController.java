@@ -1,5 +1,9 @@
 package application;
 
+import java.util.Map;
+
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
@@ -57,11 +61,22 @@ public class MainController {
 		
 		testListView.getItems().addAll(characterList.getObservableCharacters());
 		
+		updateStatsTableView();
+		
 	}
 	
 	public void updateStatsTableView() {
-		statsColumnValue.setCellValueFactory(new PropertyValueFactory<Character, Integer>());
-		statsColumnKey.setCellValueFactory(new PropertyValueFactory<Department, String>("address"));
+//		statsColumnValue.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getStats().values()));
+//		statsColumnKey.setCellValueFactory(new MapValueFactory<>("firstName"));
+//		
+//		.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getStats().keySet()));
+//	    
+//	    statsTableView.setItems(characterList.getObservableCharacters());
 	}
 	
 }
+//	    Character selectedCharacter = characterList.getObservableCharacters().get(0);
+	    
+//	    Map<String, Integer> stats = selectedCharacter.getStats();
+//	    // Create an ObservableList from the stats
+//	    ObservableList<Map.Entry<String, Integer>> observableStats = FXCollections.observableArrayList(stats.entrySet());

@@ -1,17 +1,24 @@
 package model;
 
+import java.util.Collection;
 // import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableMap;
 
 public class Character {
 	public String name; 
 	private int level;
-	private LinkedHashMap<String, Integer> stats = new LinkedHashMap<String, Integer>(); 
+//	private LinkedHashMap<String, Integer> stats = new LinkedHashMap<String, Integer>(); 
 	
-//	private ObservableLinkedMap<String,Integer> observableStats = FXCollections.observableLinkedHashMap(stats);
-//
+//	private ObservableMap<String,Integer> observableStats = FXCollections.observableHashMap(new LinkedHashMap<>());
+	
+	private ObservableMap<String,Integer> stats = FXCollections.observableMap(new LinkedHashMap<>());
+
 //	public ObservableMap<String,Integer> getStats(){
 //	    return stats;
 //	}
@@ -59,5 +66,26 @@ public class Character {
 		int save = (stats.get(type)) - 10;
 		return save;	
 	}
+	
+//    public Integer getStatsValue(String key) {
+//        return stats.get(key);
+//    }
+
+    public String getStatsKey(Integer value) {
+        for (Map.Entry<String, Integer> entry : stats.entrySet()) {
+            if (Objects.equals(value, entry.getValue())) {
+                return entry.getKey();
+            }
+        }
+        return null;
+    }
+    
+    public Collection<Integer> getStatsValue() {
+        return stats.values();
+    }
+
+    public Set<String> getStatsKey() {
+        return stats.keySet();
+    }
 	
 }
