@@ -35,16 +35,17 @@ public class MainController {
 	
 	public MainController () {
 		// Why have and use MainController to create data instead of initialize? 
-		 
-	}
-	public void initialize () {
+		
 		Character character1 = new Character("Cleave", 1);
 		
-		character1.addStats("STR", 13);
-		character1.addStats("DEX", 14);
-		character1.addStats("CON", 15);
+		character1.addStats(18);
+		character1.addStats(14);
+		character1.addStats(16);
+		character1.addStats(7);
+		character1.addStats(10);
+		character1.addStats(13);
 		
-		character1.getStats();
+		System.out.println(character1.getStats());
 		
 		Fighter fighter1 = new Fighter("Bobby the bird", 9, "Bird"); 
 		
@@ -52,10 +53,13 @@ public class MainController {
 		
 		testArea.setText(fighter1.getName());
 		
-		System.out.println(character1.calculateSave("STR"));
-		
 		characterList.addCharacter(character1);
 		characterList.addCharacter(fighter1);
+		 
+	}
+	public void initialize () {
+		
+//		System.out.println(character1.calculateSave("STR"));
 		
 		System.out.println(characterList.getObservableCharacters());
 		

@@ -6,6 +6,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import javafx.collections.ObservableList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableMap;
@@ -17,7 +18,9 @@ public class Character {
 	
 //	private ObservableMap<String,Integer> observableStats = FXCollections.observableHashMap(new LinkedHashMap<>());
 	
-	private ObservableMap<String,Integer> stats = FXCollections.observableMap(new LinkedHashMap<>());
+//	private ObservableMap<String,Integer> stats = FXCollections.observableMap(new LinkedHashMap<>());
+	
+	private ObservableList<Integer> stats = FXCollections.observableArrayList();
 
 //	public ObservableMap<String,Integer> getStats(){
 //	    return stats;
@@ -28,6 +31,14 @@ public class Character {
 	// computeIfPresent or just compute
 	// merge - not obviously applicable
 	
+	public ObservableList<Integer> getStats() {
+		return stats;
+	}
+
+	public void setStats(ObservableList<Integer> stats) {
+		this.stats = stats;
+	}
+
 	public Character() {
 	}
 	
@@ -48,44 +59,48 @@ public class Character {
 		this.level = level;
 	} 
 	
-	public void addStats(String type, int stat) {
-		stats.put(type, stat);
+	public void addStats(int stat) {
+		stats.add(stat); 
 	}
 	
-	public void getStats () {
-		for (Integer i : stats.values()) {
-			System.out.println(i);
-		}
-	}
-	
-	public int getStat(String type) {
-		return stats.get(type); 
-	}
-	
-	public int calculateSave(String type) { 
-		int save = (stats.get(type)) - 10;
-		return save;	
-	}
-	
-//    public Integer getStatsValue(String key) {
-//        return stats.get(key);
+//	public void addStats(String type, int stat) {
+//		stats.put(type, stat);
+//	}
+//	
+//	public void getStats () {
+//		for (Integer i : stats.values()) {
+//			System.out.println(i);
+//		}
+//	}
+//	
+//	public int getStat(String type) {
+//		return stats.get(type); 
+//	}
+//	
+//	public int calculateSave(String type) { 
+//		int save = (stats.get(type)) - 10;
+//		return save;	
+//	}
+//	
+////    public Integer getStatsValue(String key) {
+////        return stats.get(key);
+////    }
+//
+//    public String getStatsKey(Integer value) {
+//        for (Map.Entry<String, Integer> entry : stats.entrySet()) {
+//            if (Objects.equals(value, entry.getValue())) {
+//                return entry.getKey();
+//            }
+//        }
+//        return null;
 //    }
-
-    public String getStatsKey(Integer value) {
-        for (Map.Entry<String, Integer> entry : stats.entrySet()) {
-            if (Objects.equals(value, entry.getValue())) {
-                return entry.getKey();
-            }
-        }
-        return null;
-    }
-    
-    public Collection<Integer> getStatsValue() {
-        return stats.values();
-    }
-
-    public Set<String> getStatsKey() {
-        return stats.keySet();
-    }
+//    
+//    public Collection<Integer> getStatsValue() {
+//        return stats.values();
+//    }
+//
+//    public Set<String> getStatsKey() {
+//        return stats.keySet();
+//    }
 	
 }
