@@ -13,6 +13,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import model.Character;
 import model.CharacterList;
 import model.Fighter;
@@ -103,6 +104,21 @@ public class MainController {
 		statsColumnKey.setCellValueFactory(new PropertyValueFactory<Character, String>("name"));		
 	    
 	    statsTableView.setItems(characterList.getObservableCharacters());
+	}
+	
+	public void characterClicked(MouseEvent event) {
+		Character clickedCharacter = statsTableView.getSelectionModel().getSelectedItem();
+		
+		if (clickedCharacter != null) {
+			textFieldStr.setText(String.valueOf(clickedCharacter.getStats().get(0)));
+			textFieldDex.setText(String.valueOf(clickedCharacter.getStats().get(1)));
+			textFieldCon.setText(String.valueOf(clickedCharacter.getStats().get(2)));
+			textFieldInt.setText(String.valueOf(clickedCharacter.getStats().get(3)));
+			textFieldWis.setText(String.valueOf(clickedCharacter.getStats().get(4)));
+			textFieldCha.setText(String.valueOf(clickedCharacter.getStats().get(5)));
+		} else {
+			
+		}
 	}
 	
 }
