@@ -53,6 +53,18 @@
             <Label text="   Score" GridPane.columnIndex="1" />
             <Label prefHeight="17.0" prefWidth="74.0" text="Mod" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
             <Label text="   Save" GridPane.columnIndex="3" />
+                        <Label fx:id="modLabelStr" prefHeight="18.0" prefWidth="78.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label fx:id="modLabelDex" prefHeight="18.0" prefWidth="76.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label fx:id="modLabelCon" prefHeight="18.0" prefWidth="75.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Label fx:id="modLabelInt" prefHeight="18.0" prefWidth="74.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Label fx:id="modLabelWis" prefHeight="18.0" prefWidth="77.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Label fx:id="modLabelCha" prefHeight="18.0" prefWidth="77.0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <Label prefHeight="18.0" prefWidth="78.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Label prefHeight="18.0" prefWidth="74.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Label prefHeight="18.0" prefWidth="74.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Label prefHeight="18.0" prefWidth="74.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Label prefHeight="18.0" prefWidth="74.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <Label prefHeight="18.0" prefWidth="74.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
          </children>
       </GridPane>
    </children>
