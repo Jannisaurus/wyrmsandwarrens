@@ -63,6 +63,22 @@ public class Character {
 		stats.add(stat); 
 	}
 	
+	public int calculateMod(int stat) {
+		if (stat >= 20) {
+			return 4; 
+		} else if (stat >= 18) {
+			return 3; 
+		} else if (stat >= 16) {
+			return 2; 
+		} else if (stat >= 13) {
+			return 1;
+		} else if (stat >= 8) {
+			return 0; 
+		} else {
+			return -1; 
+		}
+	}
+	
 //	public void addStats(String type, int stat) {
 //		stats.put(type, stat);
 //	}

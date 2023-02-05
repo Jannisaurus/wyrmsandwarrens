@@ -14,6 +14,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.control.Label;
 import model.Character;
 import model.CharacterList;
 import model.Fighter;
@@ -52,6 +53,24 @@ public class MainController {
 	
 	@FXML
 	private TextField textFieldCha; 
+	
+	@FXML
+	private Label modLabelStr; 
+	
+	@FXML
+	private Label modLabelDex;
+	
+	@FXML
+	private Label modLabelCon;
+	
+	@FXML
+	private Label modLabelInt;
+	
+	@FXML
+	private Label modLabelWis;
+	
+	@FXML
+	private Label modLabelCha;
 	
 	CharacterList characterList = new CharacterList(); 
 	
@@ -110,12 +129,32 @@ public class MainController {
 		Character clickedCharacter = statsTableView.getSelectionModel().getSelectedItem();
 		
 		if (clickedCharacter != null) {
-			textFieldStr.setText(String.valueOf(clickedCharacter.getStats().get(0)));
-			textFieldDex.setText(String.valueOf(clickedCharacter.getStats().get(1)));
-			textFieldCon.setText(String.valueOf(clickedCharacter.getStats().get(2)));
-			textFieldInt.setText(String.valueOf(clickedCharacter.getStats().get(3)));
-			textFieldWis.setText(String.valueOf(clickedCharacter.getStats().get(4)));
-			textFieldCha.setText(String.valueOf(clickedCharacter.getStats().get(5)));
+			int str = clickedCharacter.getStats().get(0);
+			int dex = clickedCharacter.getStats().get(1);
+			int con = clickedCharacter.getStats().get(2);
+			int inte = clickedCharacter.getStats().get(3);
+			int wis = clickedCharacter.getStats().get(4);
+			int cha = clickedCharacter.getStats().get(5);
+					
+			textFieldStr.setText(String.valueOf(str));
+			textFieldDex.setText(String.valueOf(dex));
+			textFieldCon.setText(String.valueOf(con));
+			textFieldInt.setText(String.valueOf(inte));
+			textFieldWis.setText(String.valueOf(wis));
+			textFieldCha.setText(String.valueOf(cha));
+			
+			modLabelStr.setText(String.valueOf(
+					clickedCharacter.calculateMod(str)));
+			modLabelDex.setText(String.valueOf(
+					clickedCharacter.calculateMod(dex)));
+			modLabelCon.setText(String.valueOf(
+					clickedCharacter.calculateMod(con)));
+			modLabelInt.setText(String.valueOf(
+					clickedCharacter.calculateMod(inte)));
+			modLabelWis.setText(String.valueOf(
+					clickedCharacter.calculateMod(wis)));
+			modLabelCha.setText(String.valueOf(
+					clickedCharacter.calculateMod(cha)));
 		} else {
 			
 		}
