@@ -14,6 +14,8 @@ import javafx.collections.ObservableMap;
 public class Character {
 	public String name; 
 	private int level;
+	
+	
 //	private LinkedHashMap<String, Integer> stats = new LinkedHashMap<String, Integer>(); 
 	
 //	private ObservableMap<String,Integer> observableStats = FXCollections.observableHashMap(new LinkedHashMap<>());

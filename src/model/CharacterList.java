@@ -4,8 +4,11 @@ import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+//import javafx.beans.InvalidationListener;
+//import javafx.beans.Observable; 
 
-public class CharacterList {
+public class CharacterList // implements javafx.beans.Observable 
+{
 	private ArrayList<Character> allCharacters = new ArrayList<>(); 
 	private ObservableList<Character> observableCharacters = FXCollections.observableList(allCharacters);
 	
@@ -32,6 +35,18 @@ public class CharacterList {
 	public void addCharacter(Character character) {
 		allCharacters.add(character); 
 	}
+
+//	@Override
+//	public void addListener(InvalidationListener arg0) {
+//		// TODO Auto-generated method stub
+//		
+//	}
+//
+//	@Override
+//	public void removeListener(InvalidationListener arg0) {
+//		// TODO Auto-generated method stub
+//		
+//	}
 
 
 }

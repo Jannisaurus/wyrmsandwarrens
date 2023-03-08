@@ -15,10 +15,10 @@
    <children>
       <TextArea fx:id="testArea" layoutX="311.0" layoutY="496.0" prefHeight="200.0" prefWidth="200.0" />
       <ListView fx:id="testListView" layoutX="54.0" layoutY="496.0" prefHeight="200.0" prefWidth="200.0" />
-      <TableView fx:id="statsTableView" layoutX="374.0" layoutY="87.0" onMouseClicked="#characterClicked" prefHeight="200.0" prefWidth="167.0">
+      <TableView fx:id="characterTableView" layoutX="374.0" layoutY="87.0" onMouseClicked="#characterClicked" prefHeight="200.0" prefWidth="167.0">
         <columns>
-          <TableColumn fx:id="statsColumnKey" prefWidth="96.0" text="Character" />
-          <TableColumn fx:id="statsColumnValue" prefWidth="70.0" text="Level" />
+          <TableColumn fx:id="characterTableColumn" prefWidth="96.0" text="Character" />
+          <TableColumn fx:id="levelTableColumn" prefWidth="70.0" text="Level" />
         </columns>
       </TableView>
       <GridPane layoutX="42.0" layoutY="87.0" prefHeight="200.0" prefWidth="296.0">
@@ -67,5 +67,13 @@
             <Label prefHeight="18.0" prefWidth="74.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
          </children>
       </GridPane>
+      <TableView fx:id="statsTableView" layoutX="42.0" layoutY="308.0" prefHeight="170.0" prefWidth="314.0">
+        <columns>
+          <TableColumn fx:id="statsTableColumn" prefWidth="75.0" text="Bob" />
+          <TableColumn fx:id="scoreTableColumn" minWidth="0.0" prefWidth="79.19995880126953" text="Score" />
+            <TableColumn fx:id="modTableColumn" prefWidth="70.4000244140625" text="Mod" />
+            <TableColumn fx:id="saveTableColumn" prefWidth="88.0" text="Save" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

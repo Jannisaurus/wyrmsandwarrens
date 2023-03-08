@@ -18,6 +18,7 @@ import javafx.scene.control.Label;
 import model.Character;
 import model.CharacterList;
 import model.Fighter;
+import model.StatTableRow;
 
 public class MainController {
 	
@@ -28,13 +29,28 @@ public class MainController {
 	private ListView<Character> testListView; 
 	
 	@FXML
-	private TableColumn<Character, Integer> statsColumnValue;
+	private TableColumn<Character, Integer> levelTableColumn;
 	
 	@FXML
-	private TableColumn<Character, String> statsColumnKey;
+	private TableColumn<Character, String> characterTableColumn;
 	
 	@FXML
-	private TableView<Character> statsTableView;
+	private TableView<Character> characterTableView;
+	
+	@FXML
+	private TableColumn<StatTableRow, String> statsTableColumn;
+	
+	@FXML
+	private TableColumn<StatTableRow, Integer> scoreTableColumn;
+	
+	@FXML
+	private TableColumn<StatTableRow, Integer> modTableColumn;
+	
+	@FXML
+	private TableColumn<StatTableRow, Integer> saveTableColumn;
+	
+	@FXML
+	private TableView<StatTableRow> statsTableView;
 	
 	@FXML
 	private TextField textFieldStr; 
@@ -72,7 +88,8 @@ public class MainController {
 	@FXML
 	private Label modLabelCha;
 	
-	CharacterList characterList = new CharacterList(); 
+	private CharacterList characterList = new CharacterList(); 
+	private ObservableList<StatTableRow> statRow = FXCollections.observableArrayList();
 	
 	public MainController () {
 		// Why have and use MainController to create data instead of initialize? 
@@ -106,29 +123,58 @@ public class MainController {
 		
 		characterList.addCharacter(character1);
 		characterList.addCharacter(fighter1);
+		
+		statRow.add(new StatTableRow("Str"));
+		statRow.add(new StatTableRow("Dex"));
+		statRow.add(new StatTableRow("Con"));
+		statRow.add(new StatTableRow("Int"));
+		statRow.add(new StatTableRow("Wis"));
+		statRow.add(new StatTableRow("Cha"));
+		
+//		testListView.getItems().addAll(fighter1.getStats());
 		 
 	}
 	public void initialize () {
 		
 		testListView.getItems().addAll(characterList.getObservableCharacters());
-	
+		
 		updateStatsTableView();
+	
+		updateCharacterTableView();
 		
 		testArea.setText(characterList.getAllCharacters().get(0).getName());
 		
 	}
 	
-	public void updateStatsTableView() {
-		statsColumnValue.setCellValueFactory(new PropertyValueFactory<Character, Integer>("level"));
-		statsColumnKey.setCellValueFactory(new PropertyValueFactory<Character, String>("name"));		
+	public void updateCharacterTableView() {
+		levelTableColumn.setCellValueFactory(new PropertyValueFactory<Character, Integer>("level"));
+		characterTableColumn.setCellValueFactory(new PropertyValueFactory<Character, String>("name"));
 	    
-	    statsTableView.setItems(characterList.getObservableCharacters());
+	    characterTableView.setItems(characterList.getObservableCharacters());
+	}
+	
+	public void updateStatsTableView() {
+		statsTableColumn.setCellValueFactory(new PropertyValueFactory<StatTableRow, String>("statName"));
+		scoreTableColumn.setCellValueFactory(new PropertyValueFactory<StatTableRow, Integer>("statScore"));		
+		modTableColumn.setCellValueFactory(new PropertyValueFactory<StatTableRow, Integer>("mod"));
+		saveTableColumn.setCellValueFactory(new PropertyValueFactory<StatTableRow, Integer>("save"));
+		
+	    statsTableView.setItems(statRow);
 	}
 	
 	public void characterClicked(MouseEvent event) {
-		Character clickedCharacter = statsTableView.getSelectionModel().getSelectedItem();
+		Character clickedCharacter = characterTableView.getSelectionModel().getSelectedItem();
 		
 		if (clickedCharacter != null) {
+			
+			for(int i = 0; i < 6; i++) {
+				StatTableRow row = statRow.get(i); 
+				row.setStatScore(clickedCharacter.getStats().get(i));
+				statRow.set(i, row);
+			}
+			
+			updateStatsTableView();
+			
 			int str = clickedCharacter.getStats().get(0);
 			int dex = clickedCharacter.getStats().get(1);
 			int con = clickedCharacter.getStats().get(2);
@@ -155,6 +201,8 @@ public class MainController {
 					clickedCharacter.calculateMod(wis)));
 			modLabelCha.setText(String.valueOf(
 					clickedCharacter.calculateMod(cha)));
+			
+
 		} else {
 			
 		}
