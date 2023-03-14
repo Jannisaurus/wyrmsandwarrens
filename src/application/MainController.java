@@ -6,6 +6,7 @@ import java.util.Map;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
@@ -14,6 +15,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import model.Character;
 import model.CharacterList;
@@ -88,6 +90,12 @@ public class MainController {
 	@FXML
 	private Label modLabelCha;
 	
+//	@FXML
+//	private Button buttonGenerateCharacter;
+	
+	@FXML
+	private TextField textFieldName;
+	
 	private CharacterList characterList = new CharacterList(); 
 	private ObservableList<StatTableRow> statRow = FXCollections.observableArrayList();
 	
@@ -161,6 +169,23 @@ public class MainController {
 		
 	    statsTableView.setItems(statRow);
 	}
+	public void buttonGenerateCharacter(ActionEvent event) {
+		
+		String name = textFieldName.getText();
+		
+		System.out.println(name);
+		
+		Character character = new Character(name); 
+		
+		System.out.println(character.getLevel());
+		
+		characterList.addCharacter(character);
+		
+		System.out.println(characterList.getAllCharacters().size());
+		
+		updateCharacterTableView();
+	}
+	
 	
 	public void characterClicked(MouseEvent event) {
 		Character clickedCharacter = characterTableView.getSelectionModel().getSelectedItem();
@@ -175,38 +200,39 @@ public class MainController {
 			
 			updateStatsTableView();
 			
-			int str = clickedCharacter.getStats().get(0);
-			int dex = clickedCharacter.getStats().get(1);
-			int con = clickedCharacter.getStats().get(2);
-			int inte = clickedCharacter.getStats().get(3);
-			int wis = clickedCharacter.getStats().get(4);
-			int cha = clickedCharacter.getStats().get(5);
-					
-			textFieldStr.setText(String.valueOf(str));
-			textFieldDex.setText(String.valueOf(dex));
-			textFieldCon.setText(String.valueOf(con));
-			textFieldInt.setText(String.valueOf(inte));
-			textFieldWis.setText(String.valueOf(wis));
-			textFieldCha.setText(String.valueOf(cha));
-			
-			modLabelStr.setText(String.valueOf(
-					clickedCharacter.calculateMod(str)));
-			modLabelDex.setText(String.valueOf(
-					clickedCharacter.calculateMod(dex)));
-			modLabelCon.setText(String.valueOf(
-					clickedCharacter.calculateMod(con)));
-			modLabelInt.setText(String.valueOf(
-					clickedCharacter.calculateMod(inte)));
-			modLabelWis.setText(String.valueOf(
-					clickedCharacter.calculateMod(wis)));
-			modLabelCha.setText(String.valueOf(
-					clickedCharacter.calculateMod(cha)));
+//			int str = clickedCharacter.getStats().get(0);
+//			int dex = clickedCharacter.getStats().get(1);
+//			int con = clickedCharacter.getStats().get(2);
+//			int inte = clickedCharacter.getStats().get(3);
+//			int wis = clickedCharacter.getStats().get(4);
+//			int cha = clickedCharacter.getStats().get(5);
+//					
+//			textFieldStr.setText(String.valueOf(str));
+//			textFieldDex.setText(String.valueOf(dex));
+//			textFieldCon.setText(String.valueOf(con));
+//			textFieldInt.setText(String.valueOf(inte));
+//			textFieldWis.setText(String.valueOf(wis));
+//			textFieldCha.setText(String.valueOf(cha));
+//			
+//			modLabelStr.setText(String.valueOf(
+//					clickedCharacter.calculateMod(str)));
+//			modLabelDex.setText(String.valueOf(
+//					clickedCharacter.calculateMod(dex)));
+//			modLabelCon.setText(String.valueOf(
+//					clickedCharacter.calculateMod(con)));
+//			modLabelInt.setText(String.valueOf(
+//					clickedCharacter.calculateMod(inte)));
+//			modLabelWis.setText(String.valueOf(
+//					clickedCharacter.calculateMod(wis)));
+//			modLabelCha.setText(String.valueOf(
+//					clickedCharacter.calculateMod(cha)));
 			
 
 		} else {
 			
 		}
 	}
+	
 	
 }
 

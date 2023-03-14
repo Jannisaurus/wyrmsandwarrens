@@ -14,6 +14,7 @@ import javafx.collections.ObservableMap;
 public class Character {
 	public String name; 
 	private int level;
+	private ObservableList<Integer> stats = FXCollections.observableArrayList();
 	
 	
 //	private LinkedHashMap<String, Integer> stats = new LinkedHashMap<String, Integer>(); 
@@ -22,7 +23,6 @@ public class Character {
 	
 //	private ObservableMap<String,Integer> stats = FXCollections.observableMap(new LinkedHashMap<>());
 	
-	private ObservableList<Integer> stats = FXCollections.observableArrayList();
 
 //	public ObservableMap<String,Integer> getStats(){
 //	    return stats;
@@ -33,14 +33,6 @@ public class Character {
 	// computeIfPresent or just compute
 	// merge - not obviously applicable
 	
-	public ObservableList<Integer> getStats() {
-		return stats;
-	}
-
-	public void setStats(ObservableList<Integer> stats) {
-		this.stats = stats;
-	}
-
 	public Character() {
 	}
 	
@@ -48,6 +40,13 @@ public class Character {
 		this.name = name;
 		this.level = level;
 	}
+	
+	public Character(String name) {
+		this.name = name;
+		this.level = 1; 
+		generateCharacter();
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -65,6 +64,14 @@ public class Character {
 		stats.add(stat); 
 	}
 	
+	public ObservableList<Integer> getStats() {
+		return stats;
+	}
+
+	public void setStats(ObservableList<Integer> stats) {
+		this.stats = stats;
+	}
+	
 	public int calculateMod(int stat) {
 		if (stat >= 20) {
 			return 4; 
@@ -78,6 +85,13 @@ public class Character {
 			return 0; 
 		} else {
 			return -1; 
+		}
+	}
+	
+	private void generateCharacter() {
+		for (int i = 0; i < 6 ; i++) {
+			int random = (int)(Math.random() * 6 + 1) + (int)(Math.random() * 6 + 1) + (int)(Math.random() * 6 + 1);
+			stats.add(random);
 		}
 	}
 	
