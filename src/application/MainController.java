@@ -183,7 +183,8 @@ public class MainController {
 		
 		System.out.println(characterList.getAllCharacters().size());
 		
-		updateCharacterTableView();
+	    characterTableView.setItems(characterList.getObservableCharacters());
+	    characterTableView.refresh();
 	}
 	
 	

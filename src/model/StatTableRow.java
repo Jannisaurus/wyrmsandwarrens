@@ -24,6 +24,8 @@ public class StatTableRow {
 
 	public void setStatScore(int statScore) {
 		this.statScore = statScore;
+		this.mod = calculateMod(statScore);
+		this.save = statScore - 10;
 	}
 
 	public int getMod() {
@@ -40,6 +42,22 @@ public class StatTableRow {
 
 	public void setSave(int save) {
 		this.save = save;
+	}
+	
+	public int calculateMod(int stat) {
+		if (stat >= 20) {
+			return 4; 
+		} else if (stat >= 18) {
+			return 3; 
+		} else if (stat >= 16) {
+			return 2; 
+		} else if (stat >= 13) {
+			return 1;
+		} else if (stat >= 8) {
+			return 0; 
+		} else {
+			return -1; 
+		}
 	}
 
 	
