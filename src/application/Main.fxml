@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="753.0" prefWidth="658.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="753.0" prefWidth="823.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
-      <TextArea fx:id="testArea" layoutX="311.0" layoutY="511.0" prefHeight="185.0" prefWidth="200.0" />
-      <ListView fx:id="testListView" layoutX="54.0" layoutY="511.0" prefHeight="185.0" prefWidth="200.0" />
-      <TableView fx:id="characterTableView" layoutX="428.0" layoutY="128.0" onMouseClicked="#characterClicked" prefHeight="200.0" prefWidth="167.0">
+      <TableView fx:id="characterTableView" layoutX="52.0" layoutY="503.0" onMouseClicked="#characterClicked" prefHeight="208.0" prefWidth="184.0">
         <columns>
-          <TableColumn fx:id="characterTableColumn" prefWidth="96.0" text="Character" />
-          <TableColumn fx:id="levelTableColumn" prefWidth="70.0" text="Level" />
+          <TableColumn fx:id="characterTableColumn" prefWidth="128.0" text="Character" />
+          <TableColumn fx:id="levelTableColumn" prefWidth="55.0" text="Level" />
         </columns>
       </TableView>
       <GridPane layoutX="387.0" layoutY="526.0" prefHeight="200.0" prefWidth="296.0" visible="false">
@@ -68,16 +65,28 @@
             <Label prefHeight="18.0" prefWidth="74.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
          </children>
       </GridPane>
-      <TableView fx:id="statsTableView" layoutX="67.0" layoutY="132.0" prefHeight="192.0" prefWidth="320.0">
-        <columns>
-          <TableColumn fx:id="statsTableColumn" prefWidth="75.0" sortable="false" />
-          <TableColumn fx:id="scoreTableColumn" minWidth="0.0" prefWidth="79.19995880126953" sortable="false" text="Score" />
-            <TableColumn fx:id="modTableColumn" prefWidth="82.0" sortable="false" text="Mod" />
-            <TableColumn fx:id="saveTableColumn" prefWidth="77.0" sortable="false" text="Save" />
-        </columns>
-      </TableView>
-      <Label layoutX="67.0" layoutY="66.0" prefHeight="17.0" prefWidth="52.0" text="Name: " />
-      <TextField fx:id="textFieldName" layoutX="119.0" layoutY="62.0" prefHeight="25.0" prefWidth="106.0" />
-      <Button layoutX="140.0" layoutY="94.0" mnemonicParsing="false" onAction="#buttonGenerateCharacter" text="Generate" />
+      <AnchorPane fx:id="characterAnchorPane" layoutX="46.0" layoutY="41.0" prefHeight="438.0" prefWidth="731.0">
+         <children>
+            <Button layoutX="140.0" layoutY="157.0" mnemonicParsing="false" onAction="#buttonGenerateCharacter" prefHeight="25.0" prefWidth="106.0" text="Create character" />
+            <TableView fx:id="statsTableView" layoutX="36.0" layoutY="213.0" prefHeight="200.0" prefWidth="323.0">
+              <columns>
+                <TableColumn fx:id="statsTableColumn" prefWidth="75.0" sortable="false" />
+                <TableColumn fx:id="scoreTableColumn" minWidth="0.0" prefWidth="79.19995880126953" sortable="false" text="Score" />
+                  <TableColumn fx:id="modTableColumn" prefWidth="82.0" sortable="false" text="Mod" />
+                  <TableColumn fx:id="saveTableColumn" prefWidth="77.0" sortable="false" text="Save" />
+              </columns>
+            </TableView>
+            <Label layoutX="17.0" layoutY="26.0" prefHeight="17.0" prefWidth="52.0" text="Name: " />
+            <TextField fx:id="textFieldName" layoutX="69.0" layoutY="22.0" prefHeight="25.0" prefWidth="106.0" />
+            <ComboBox layoutX="69.0" layoutY="63.0" prefHeight="25.0" prefWidth="106.0" />
+            <Label layoutX="17.0" layoutY="67.0" prefHeight="17.0" prefWidth="52.0" text="Class:" />
+            <ComboBox layoutX="69.0" layoutY="104.0" prefHeight="25.0" prefWidth="106.0" />
+            <Label layoutX="17.0" layoutY="108.0" prefHeight="17.0" prefWidth="52.0" text="Race:" />
+            <Label layoutX="203.0" layoutY="26.0" prefHeight="17.0" prefWidth="52.0" text="Level:" />
+            <TextField fx:id="textFieldName1" layoutX="276.0" layoutY="23.0" prefHeight="25.0" prefWidth="40.0" />
+            <Label layoutX="203.0" layoutY="67.0" prefHeight="17.0" prefWidth="64.0" text="Alignment:" />
+            <TextField fx:id="textFieldName2" layoutX="276.0" layoutY="63.0" prefHeight="25.0" prefWidth="74.0" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

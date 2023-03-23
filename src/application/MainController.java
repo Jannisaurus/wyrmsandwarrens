@@ -25,12 +25,6 @@ import model.StatTableRow;
 public class MainController {
 	
 	@FXML
-	private TextArea testArea; 
-	
-	@FXML
-	private ListView<Character> testListView; 
-	
-	@FXML
 	private TableColumn<Character, Integer> levelTableColumn;
 	
 	@FXML
@@ -144,14 +138,10 @@ public class MainController {
 	}
 	public void initialize () {
 		
-		testListView.getItems().addAll(characterList.getObservableCharacters());
-		
 		updateStatsTableView();
 	
 		updateCharacterTableView();
-		
-		testArea.setText(characterList.getAllCharacters().get(0).getName());
-		
+
 	}
 	
 	public void updateCharacterTableView() {
@@ -173,18 +163,17 @@ public class MainController {
 		
 		String name = textFieldName.getText();
 		
-		System.out.println(name);
-		
-		Character character = new Character(name); 
-		
-		System.out.println(character.getLevel());
-		
-		characterList.addCharacter(character);
-		
-		System.out.println(characterList.getAllCharacters().size());
-		
-	    characterTableView.setItems(characterList.getObservableCharacters());
-	    characterTableView.refresh();
+		if (!name.isEmpty()) {
+			Character character = new Character(name); 
+			
+			characterList.addCharacter(character);
+			
+		    characterTableView.setItems(characterList.getObservableCharacters());
+		    characterTableView.refresh();
+		} else {
+			System.out.println("NAME");
+		}
+
 	}
 	
 	
